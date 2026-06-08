@@ -69,7 +69,7 @@ const T = {
     proj_label:   "Work",
     proj_title:   "Projects",
     p1_num:       "01 — Institutional website",
-    p1_type:      "HOA · Residential · Cesson (77)",
+    p1_type:      "Nouveau Village · Residential · Cesson (77)",
     p1_desc:      "Full showcase website for a homeowner association — services presentation, news section, and integrated contact form with email confirmation. Professional design that builds resident trust.",
     p2_num:       "02 — Internal tool",
     p2_type:      "Management interface · Store layout",
@@ -77,8 +77,8 @@ const T = {
     ct_label:     "Let's work together",
     ct_title:     "Got a project<br>in mind?",
     ct_p:         "Whether it's a new website, a redesign or a custom tool — let's talk. I usually respond within 24 hours.",
-    ct_email:     "votre.email@exemple.com",
-    ft_copy:      "© 2025 Mathéo Jannest"
+    ct_email:     "matheojannnest26@gmail.com",
+    ft_copy:      "© 2026 Mathéo Jannest"
   }
 };
 

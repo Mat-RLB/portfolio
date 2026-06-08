@@ -712,8 +712,8 @@ section { padding: 7rem 0; }
   align-items: center;
   gap: 0.5rem;
   font-family: 'Space Mono', monospace;
-  font-size: clamp(1rem, 2.5vw, 1.3rem);
-  font-weight: 600;
+  font-size: clamp(1,9rem, 1.5vw, 1.3rem);
+  font-weight: 900;
   letter-spacing: -0.01em;
   color: var(--accent-2);
   transition: all 0.3s ease;
