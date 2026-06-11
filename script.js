@@ -117,7 +117,10 @@ const io = new IntersectionObserver(entries => {
       io.unobserve(e.target);
     }
   });
-}, { threshold: 0.1 });
+}, { 
+  threshold: 0.1,
+  rootMargin: '50px'
+});
 
 document.querySelectorAll('.reveal').forEach(el => io.observe(el));
 
