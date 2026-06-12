@@ -16,6 +16,8 @@ html { scroll-behavior: smooth; }
   --glow:     rgba(255, 0, 110, 0.4);
   --fd: 'Syne', sans-serif;
   --fb: 'DM Sans', sans-serif;
+  --fd: 'Syne', 'Arial Black', sans-serif;
+  --fb: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 }
 
 body {
