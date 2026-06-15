@@ -29,7 +29,7 @@ const T = {
     proj_label:   "Réalisations",
     proj_title:   "Projets",
     p1_num:       "01 — Site institutionnel",
-    p1_type:      "Nouveau Village · Copropriété · Cesson (77)",
+    p1_type:      "ASL · Copropriété · Cesson (77)",
     p1_desc:      "Site vitrine complet pour une association syndicale libre — présentation des services, actualités, et formulaire de contact intégré avec confirmation par email. Design professionnel pensé pour instaurer la confiance.",
     p2_num:       "02 — Outil interne",
     p2_type:      "Interface de gestion · Aménagement magasin",
@@ -37,8 +37,8 @@ const T = {
     ct_label:     "Travaillons ensemble",
     ct_title:     "Un projet<br>en tête ?",
     ct_p:         "Que ce soit pour un site vitrine, une refonte ou un outil sur mesure — parlons-en. Je réponds généralement sous 24h.",
-    ct_email:     "matheojannest26@gmail.com",
-    ft_copy:      "© 2026 Mathéo Jannest"
+    ct_email:     "votre.email@exemple.com",
+    ft_copy:      "© 2025 Mathéo Jannest"
   },
   en: {
     nav_about:    "About",
@@ -77,7 +77,7 @@ const T = {
     ct_label:     "Let's work together",
     ct_title:     "Got a project<br>in mind?",
     ct_p:         "Whether it's a new website, a redesign or a custom tool — let's talk. I usually respond within 24 hours.",
-    ct_email:     "matheojannest26@gmail.com",
+    ct_email:     "matheojannnest26@gmail.com",
     ft_copy:      "© 2026 Mathéo Jannest"
   }
 };
@@ -117,7 +117,7 @@ const io = new IntersectionObserver(entries => {
       io.unobserve(e.target);
     }
   });
-}, {
+}, { 
   threshold: 0.1,
   rootMargin: '50px'
 });
@@ -141,9 +141,9 @@ overlay.innerHTML = `
 `;
 document.body.appendChild(overlay);
 
-const lbImg   = overlay.querySelector('.lightbox-img');
-const lbUrl   = overlay.querySelector('.lightbox-url-text');
-const lbClose = overlay.querySelector('.lightbox-close');
+const lbImg     = overlay.querySelector('.lightbox-img');
+const lbUrl     = overlay.querySelector('.lightbox-url-text');
+const lbClose   = overlay.querySelector('.lightbox-close');
 
 function openLightbox(src, alt, url) {
   lbImg.src = src;
