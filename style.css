@@ -25,7 +25,6 @@ body {
   line-height: 1.6;
   overflow-x: hidden;
   background: linear-gradient(135deg, #0a0a1a 0%, #1a1a2e 50%, #0a1a2e 100%);
-  background-attachment: fixed;
 }
 
 h1, h2, h3 { font-family: var(--fd); line-height: 1.1; }
@@ -85,31 +84,47 @@ nav.scrolled {
   align-items: center;
   overflow: hidden;
   padding: 9rem 0 6rem;
+  /* Isole la peinture : ce qui se passe dans la hero n'oblige pas le reste
+     de la page à être recalculé. Crucial pour la fluidité quand on scrolle. */
+  contain: layout paint;
 }
 
-.blob-wrap { position: absolute; inset: 0; pointer-events: none; overflow: hidden; }
+.blob-wrap {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  /* Force le wrap sur sa propre couche de compositing -> les blobs
+     animés ne déclenchent pas de repaint sur la hero entière. */
+  transform: translateZ(0);
+  will-change: transform;
+}
 .blob {
   position: absolute;
   border-radius: 50%;
-  filter: blur(60px);
-  will-change: transform;
+  filter: blur(40px);
   transform: translateZ(0);
+  /* Animation tournant SEULEMENT quand la hero est visible (classe togglée en JS) */
+  animation-play-state: paused;
+}
+#hero.in-view .blob {
+  animation-play-state: running;
 }
 .blob-1 {
-  width: 700px; height: 700px;
-  background: radial-gradient(circle, rgba(255, 0, 110, 0.35) 0%, transparent 65%);
-  top: -180px; right: -180px;
+  width: 560px; height: 560px;
+  background: radial-gradient(circle, rgba(255, 0, 110, 0.32) 0%, transparent 65%);
+  top: -140px; right: -140px;
   animation: b1 22s ease-in-out infinite;
 }
 .blob-2 {
-  width: 450px; height: 450px;
-  background: radial-gradient(circle, rgba(0, 217, 255, 0.25) 0%, transparent 65%);
-  bottom: 0; left: -100px;
+  width: 380px; height: 380px;
+  background: radial-gradient(circle, rgba(0, 217, 255, 0.22) 0%, transparent 65%);
+  bottom: 0; left: -80px;
   animation: b2 26s ease-in-out infinite;
 }
 .blob-3 {
-  width: 280px; height: 280px;
-  background: radial-gradient(circle, rgba(255, 190, 11, 0.20) 0%, transparent 65%);
+  width: 240px; height: 240px;
+  background: radial-gradient(circle, rgba(255, 190, 11, 0.18) 0%, transparent 65%);
   top: 45%; left: 38%;
   animation: b3 19s ease-in-out infinite;
 }
@@ -234,6 +249,13 @@ h1.hero-title em {
 
 /* ── DIVIDER ── */
 hr.div { border: none; border-top: 1px solid var(--border); margin: 0; }
+
+/* ── PERF : on saute le rendu des sections hors viewport.
+   contain-intrinsic-size évite tout saut de mise en page. ── */
+#services, #projects, #contact {
+  content-visibility: auto;
+  contain-intrinsic-size: 1px 900px;
+}
 
 /* ── SECTION BASE ── */
 section { padding: 7rem 0; }

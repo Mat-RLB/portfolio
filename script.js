@@ -109,6 +109,19 @@ window.addEventListener('scroll', () => {
   nav.classList.toggle('scrolled', window.scrollY > 50);
 }, { passive: true });
 
+/* Hero — on ne fait tourner les blobs que quand la hero est visible.
+   Dès qu'elle sort de l'écran, on coupe l'animation -> plus de repaint coûteux. */
+const hero = document.getElementById('hero');
+if (hero) {
+  hero.classList.add('in-view'); // état initial : la hero est visible au chargement
+  const heroIO = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      hero.classList.toggle('in-view', e.isIntersecting);
+    });
+  }, { threshold: 0 });
+  heroIO.observe(hero);
+}
+
 /* Révélation au scroll (IntersectionObserver) */
 const io = new IntersectionObserver(entries => {
   entries.forEach(e => {
