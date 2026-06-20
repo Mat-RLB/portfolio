@@ -337,7 +337,7 @@ section { padding: 7rem 0; }
 .stat-n {
   font-family: var(--fd);
   font-weight: 800;
-  font-size: 2.5rem;
+  font-size:190%;
   color: #ff006f;
   line-height: 1.1;
   margin-bottom: 0.8rem;
@@ -346,10 +346,11 @@ section { padding: 7rem 0; }
   display: flex;
   align-items: center;
   justify-content: center;
+  min-width: 0;
 }
 .stat-n sub {
-  font-size: 1.1rem;
-  vertical-align: baseline;
+  font-size: 1.7rem;
+  vertical-align:auto;
   opacity: 0.85;
   font-weight: 600;
 }
@@ -359,6 +360,7 @@ section { padding: 7rem 0; }
   letter-spacing: 0.05em;
   text-transform: uppercase;
   font-weight: 600;
+  margin-left: 0.8rem;
 }
 
 /* ── SERVICES ── */
