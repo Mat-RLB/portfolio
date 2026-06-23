@@ -103,18 +103,29 @@ document.getElementById('langBtn').addEventListener('click', () => {
   setLang(lang === 'fr' ? 'en' : 'fr');
 });
 
-/* Copy email to clipboard */
+/* Email: try mailto first, fallback to copy if it doesn't work */
 document.querySelector('.contact-mailto').addEventListener('click', (e) => {
-  if (!navigator.clipboard) return; // Fallback sur vieux navigateurs
-  e.preventDefault();
   const email = 'matheojannest26@gmail.com';
-  navigator.clipboard.writeText(email).then(() => {
-    const originalText = e.currentTarget.innerHTML;
-    e.currentTarget.innerHTML = '<span>Copié !</span> ✓';
-    setTimeout(() => {
-      e.currentTarget.innerHTML = originalText;
-    }, 1500);
-  });
+  const link = e.currentTarget;
+  
+  // Enregistrer si la fenêtre était au focus
+  const wasFocused = document.hasFocus();
+  
+  // Laisser le mailto fonctionner (ne pas preventDefault)
+  // Attendre 500ms pour voir si ça a ouvert quelque chose
+  setTimeout(() => {
+    // Si la fenêtre est toujours au focus, c'est que mailto n'a rien ouvert
+    if (document.hasFocus() && wasFocused && navigator.clipboard) {
+      // Fallback: copier l'adresse
+      navigator.clipboard.writeText(email).then(() => {
+        const originalText = link.innerHTML;
+        link.innerHTML = '<span>Copié !</span> ✓';
+        setTimeout(() => {
+          link.innerHTML = originalText;
+        }, 1500);
+      });
+    }
+  }, 500);
 });
 /* Nav — fond au scroll */
 const nav = document.getElementById('nav');
